@@ -47,10 +47,10 @@ func (e *User) UserRoleInfo(ctx context.Context, req *user.UserRole, rsp *user.U
 	return nil
 }
 
-// UserRoleListByUID UserRoleListByUID
-func (e *User) UserRoleListByUID(ctx context.Context, req *user.UID, rsp *user.UserRoleList) error {
+// UserRoleListByUserID UserRoleListByUserID
+func (e *User) UserRoleListByUserID(ctx context.Context, req *user.UserID, rsp *user.UserRoleList) error {
 	log.Info("Received User.UserRoleListByUID req: ", req)
-	list, err := cache.Model.UserRoleListByUID(req)
+	list, err := cache.Model.UserRoleListByUserID(req)
 
 	if err != nil {
 		return err

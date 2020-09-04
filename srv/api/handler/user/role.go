@@ -34,7 +34,7 @@ func (v1 *v1) AddRole(c echo.Context) error {
 	}
 
 	info := &proto.UserRole{
-		Uid:    args.UID,
+		UserId: args.UserID,
 		RoleId: args.RoleID,
 	}
 
@@ -55,7 +55,7 @@ func (v1 *v1) AddRole(c echo.Context) error {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: err.Error()})
 	}
 
-	ok, err := v1.cr.AddGroupingPolicy(fmt.Sprintf("uid:%d", args.UID), fmt.Sprintf("role_id:%d.api", args.RoleID))
+	ok, err := v1.cr.AddGroupingPolicy(fmt.Sprintf("user_id:%d", args.UserID), fmt.Sprintf("role_id:%d.api", args.RoleID))
 
 	if err != nil {
 		log.Error("v1.cr.AddGroupingPolicy err ", err.Error())
@@ -67,7 +67,7 @@ func (v1 *v1) AddRole(c echo.Context) error {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: "添加接口权限失败"})
 	}
 
-	ok, err = v1.cr.AddGroupingPolicy(fmt.Sprintf("uid:%d", args.UID), fmt.Sprintf("role_id:%d.menu", args.RoleID))
+	ok, err = v1.cr.AddGroupingPolicy(fmt.Sprintf("user_id:%d", args.UserID), fmt.Sprintf("role_id:%d.menu", args.RoleID))
 
 	if err != nil {
 		log.Error("v1.cr.AddGroupingPolicy err ", err.Error())
@@ -104,7 +104,7 @@ func (v1 *v1) DelRole(c echo.Context) error {
 	}
 
 	_, err := v1.u.DeleteUserRole(context.Background(), &proto.UserRole{
-		Uid:    args.UID,
+		UserId: args.UserID,
 		RoleId: args.RoleID,
 	})
 
@@ -113,7 +113,7 @@ func (v1 *v1) DelRole(c echo.Context) error {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: err.Error()})
 	}
 
-	ok, err := v1.cr.RemoveGroupingPolicy(fmt.Sprintf("uid:%d", args.UID), fmt.Sprintf("role_id:%d.api", args.RoleID))
+	ok, err := v1.cr.RemoveGroupingPolicy(fmt.Sprintf("user_id:%d", args.UserID), fmt.Sprintf("role_id:%d.api", args.RoleID))
 
 	if err != nil {
 		log.Error("v1.cr.RemoveGroupingPolicy err ", err.Error())
@@ -125,7 +125,7 @@ func (v1 *v1) DelRole(c echo.Context) error {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: "删除接口权限失败"})
 	}
 
-	ok, err = v1.cr.RemoveGroupingPolicy(fmt.Sprintf("uid:%d", args.UID), fmt.Sprintf("role_id:%d.menu", args.RoleID))
+	ok, err = v1.cr.RemoveGroupingPolicy(fmt.Sprintf("user_id:%d", args.UserID), fmt.Sprintf("role_id:%d.menu", args.RoleID))
 
 	if err != nil {
 		log.Error("v1.cr.RemoveGroupingPolicy err ", err.Error())
@@ -158,8 +158,8 @@ func (v1 *v1) RoleList(c echo.Context) error {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: "参数错误：" + err})
 	}
 
-	resp, err := v1.u.UserRoleListByUID(context.Background(), &proto.UID{
-		Uid: args.UID,
+	resp, err := v1.u.UserRoleListByUserID(context.Background(), &proto.UserID{
+		UserId: args.UserID,
 	})
 
 	if err != nil {

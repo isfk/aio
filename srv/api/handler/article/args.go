@@ -33,7 +33,7 @@ type ListArgs struct {
 	Limit      int64  `json:"limit" form:"limit" query:"limit" validate:""`
 	Status     int64  `json:"status" form:"status" query:"status" validate:""`
 	Title      string `json:"title" form:"title" query:"title" validate:""`
-	UID        int64  `json:"uid" form:"uid" query:"uid" validate:""`
+	UserID     int64  `json:"user_id" form:"user_id" query:"user_id" validate:""`
 	CategoryID int64  `json:"category_id" form:"category_id" query:"category_id" validate:""`
 }
 

@@ -59,19 +59,19 @@ type ListArgs struct {
 
 // AddRoleArgs struct
 type AddRoleArgs struct {
-	UID    int64 `json:"uid" form:"uid" query:"uid" validate:"required,number"`
+	UserID int64 `json:"user_id" form:"user_id" query:"user_id" validate:"required,number"`
 	RoleID int64 `json:"role_id" form:"role_id" query:"role_id" validate:"required,number"`
 }
 
 // DelRoleArgs struct
 type DelRoleArgs struct {
-	UID    int64 `json:"uid" form:"uid" query:"uid" validate:"required,number"`
+	UserID int64 `json:"user_id" form:"user_id" query:"user_id" validate:"required,number"`
 	RoleID int64 `json:"role_id" form:"role_id" query:"role_id" validate:"required,number"`
 }
 
 // RoleListArgs struct
 type RoleListArgs struct {
-	UID int64 `json:"uid" form:"uid" query:"uid" validate:"required,number"`
+	UserID int64 `json:"user_id" form:"user_id" query:"user_id" validate:"required,number"`
 }
 
 // EmptyArgs EmptyArgs

@@ -57,11 +57,11 @@ message Api {
     string method = 2;
     string label = 3;
     string path = 4;
-    repeated role.Api children = 5;
+    repeated Api children = 5;
 }
 
 message RuleListRet {
-    repeated role.Api list = 1;
+    repeated Api list = 1;
 }
 
 message Meta {
@@ -78,7 +78,7 @@ message Menu {
     string component = 6;
     string redirect = 7;
     bool hidden = 8;
-    repeated role.Menu children = 9;
+    repeated Menu children = 9;
 }
 
 message MenuListRet {

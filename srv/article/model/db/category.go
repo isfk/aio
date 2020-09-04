@@ -64,8 +64,8 @@ func (m *DB) CategoryListByPage(in *proto.CategoryListReq) (r *proto.ArticleCate
 		db = db.Where("name like ?", "%"+in.Name+"%")
 	}
 
-	if in.Uid > 0 {
-		db = db.Where("uid = ?", in.Uid)
+	if in.UserId > 0 {
+		db = db.Where("user_id = ?", in.UserId)
 	}
 
 	var list []*proto.ArticleCategory

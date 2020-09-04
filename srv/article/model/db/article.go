@@ -79,8 +79,8 @@ func (m *DB) ListByPage(in *proto.ListReq) (r *proto.ArticleList, err error) {
 		db = db.Where("title like ?", "%"+in.Title+"%")
 	}
 
-	if in.Uid > 0 {
-		db = db.Where("uid = ?", in.Uid)
+	if in.UserId > 0 {
+		db = db.Where("user_id = ?", in.UserId)
 	}
 
 	if in.CategoryId > 0 {

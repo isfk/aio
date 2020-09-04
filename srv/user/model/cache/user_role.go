@@ -38,9 +38,9 @@ func (c *Cache) UserRoleInfo(info *proto.UserRole) (userRole *proto.UserRole, er
 	return userRole, nil
 }
 
-// UserRoleListByUID UserRoleListByUID
-func (c *Cache) UserRoleListByUID(in *proto.UID) (*proto.UserRoleList, error) {
-	list, err := db.Model.UserRoleListByUID(in)
+// UserRoleListByUserID UserRoleListByUserID
+func (c *Cache) UserRoleListByUserID(in *proto.UserID) (*proto.UserRoleList, error) {
+	list, err := db.Model.UserRoleListByUserID(in)
 
 	if err != nil {
 		return nil, err

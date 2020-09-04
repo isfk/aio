@@ -40,7 +40,7 @@ func (v1 *v1) Add(c echo.Context) error {
 		log.Error("v1.a.CategoryInfoByID err ", err.Error())
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: err.Error()})
 	}
-	if categoryInfo.Uid != userInfo.Id {
+	if categoryInfo.UserId != userInfo.Id {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: "参数错误：分类错误"})
 	}
 
@@ -98,7 +98,7 @@ func (v1 *v1) Edit(c echo.Context) error {
 		log.Error("v1.a.CategoryInfoByID err ", err.Error())
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: err.Error()})
 	}
-	if categoryInfo.Uid != userInfo.Id {
+	if categoryInfo.UserId != userInfo.Id {
 		return c.JSON(http.StatusOK, &api.RetErr{Code: 40001, Message: "参数错误：分类错误"})
 	}
 
@@ -229,7 +229,7 @@ func (v1 *v1) List(c echo.Context) error {
 		Limit:      args.Limit,
 		Status:     args.Status,
 		Title:      args.Title,
-		Uid:        args.UID,
+		UserId:     args.UserID,
 		CategoryId: args.CategoryID,
 	})
 

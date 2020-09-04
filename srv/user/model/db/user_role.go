@@ -23,7 +23,7 @@ func (m *DB) CreateUserRole(info *proto.UserRole) (*proto.UserRole, error) {
 // DeleteUserRole DeleteUserRole
 func (m *DB) DeleteUserRole(info *proto.UserRole) (*proto.UserRole, error) {
 	info.UpdatedAt = time.Now().Unix()
-	err := model.UseDB().Where("uid = ? AND role_id = ?", info.Uid, info.RoleId).Delete(&proto.UserRole{}).Error
+	err := model.UseDB().Where("user_id = ? AND role_id = ?", info.UserId, info.RoleId).Delete(&proto.UserRole{}).Error
 	if err != nil {
 		return nil, err
 	}
@@ -37,13 +37,13 @@ func (m *DB) UserRoleInfo(info *proto.UserRole) (*proto.UserRole, error) {
 	return userRole, nil
 }
 
-// UserRoleListByUID UserRoleListByUID
-func (m *DB) UserRoleListByUID(in *proto.UID) (r *proto.UserRoleList, err error) {
+// UserRoleListByUserID UserRoleListByUserID
+func (m *DB) UserRoleListByUserID(in *proto.UserID) (r *proto.UserRoleList, err error) {
 	r = &proto.UserRoleList{}
 	db := model.UseDB().Debug()
 
-	if in.Uid > 0 {
-		db = db.Where("uid = ?", in.Uid)
+	if in.UserId > 0 {
+		db = db.Where("uid = ?", in.UserId)
 	}
 
 	var list []*proto.UserRole
