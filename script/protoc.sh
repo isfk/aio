@@ -8,8 +8,7 @@ SHELL_FOLDER=$(
 for dirName in $(ls "$SHELL_FOLDER"/../proto/); do
     echo "${dirName}"
     protoc \
-    -I=$SHELL_FOLDER/../proto/$dirName \
-    -I=$GOPATH/src \
+    -I=$SHELL_FOLDER/../proto \
     -I=$GOPATH/src/github.com/gogo/protobuf/protobuf \
     --micro_out=$SHELL_FOLDER/../proto/$dirName --gogofaster_out=$SHELL_FOLDER/../proto/$dirName \
     $SHELL_FOLDER/../proto/$dirName/*.proto

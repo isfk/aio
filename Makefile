@@ -3,9 +3,9 @@ GOPATH:=$(shell go env GOPATH)
 
 .PHONY: proto
 proto:
-	@echo "making proto >>>>>>>"
+	@echo "proto >>>>>>>"
 	./script/protoc.sh
-	@echo -e "\n"
+	@echo "Done.\n"
 
 .PHONY: build
 build:
