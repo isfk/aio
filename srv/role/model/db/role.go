@@ -7,14 +7,14 @@ import (
 	proto "github.com/isfk/aio/proto/role"
 )
 
-// Mysql struct
-type Mysql struct{}
+// DB struct
+type DB struct{}
 
 // Model Model
-var Model = &Mysql{}
+var Model = &DB{}
 
 // Create Create
-func (m *Mysql) Create(info *proto.Role) (*proto.Role, error) {
+func (m *DB) Create(info *proto.Role) (*proto.Role, error) {
 	info.CreatedAt = time.Now().Unix()
 	info.UpdatedAt = info.CreatedAt
 
@@ -27,7 +27,7 @@ func (m *Mysql) Create(info *proto.Role) (*proto.Role, error) {
 }
 
 // Update Update
-func (m *Mysql) Update(info *proto.Role) (*proto.Role, error) {
+func (m *DB) Update(info *proto.Role) (*proto.Role, error) {
 	info.UpdatedAt = time.Now().Unix()
 	err := model.UseDB().Save(info).Error
 	if err != nil {
@@ -38,7 +38,7 @@ func (m *Mysql) Update(info *proto.Role) (*proto.Role, error) {
 }
 
 // Delete Delete
-func (m *Mysql) Delete(info *proto.Role) (*proto.Role, error) {
+func (m *DB) Delete(info *proto.Role) (*proto.Role, error) {
 	info.Status = proto.Status_DELETE
 	info.UpdatedAt = time.Now().Unix()
 	err := model.UseDB().Save(info).Error
@@ -50,21 +50,21 @@ func (m *Mysql) Delete(info *proto.Role) (*proto.Role, error) {
 }
 
 // InfoByID InfoByID
-func (m *Mysql) InfoByID(ID *proto.ID) (role *proto.Role, err error) {
+func (m *DB) InfoByID(ID *proto.ID) (role *proto.Role, err error) {
 	role = &proto.Role{}
 	model.UseDB().Where("id = ?", ID.Id).First(&role)
 	return role, nil
 }
 
 // InfoByName InfoByName
-func (m *Mysql) InfoByName(Name *proto.Name) (role *proto.Role, err error) {
+func (m *DB) InfoByName(Name *proto.Name) (role *proto.Role, err error) {
 	role = &proto.Role{}
 	model.UseDB().Where("name = ?", Name.Name).First(&role)
 	return role, nil
 }
 
 // ListByPage ListByPage
-func (m *Mysql) ListByPage(in *proto.ListReq) (r *proto.RoleList, err error) {
+func (m *DB) ListByPage(in *proto.ListReq) (r *proto.RoleList, err error) {
 	r = &proto.RoleList{}
 	db := model.UseDB()
 

@@ -10,14 +10,14 @@ import (
 	"github.com/labstack/gommon/random"
 )
 
-// Mysql struct
-type Mysql struct{}
+// DB struct
+type DB struct{}
 
 // Model Model
-var Model = &Mysql{}
+var Model = &DB{}
 
 // Create Create
-func (m *Mysql) Create(info *proto.User) (*proto.User, error) {
+func (m *DB) Create(info *proto.User) (*proto.User, error) {
 	info.CreatedAt = time.Now().Unix()
 	info.UpdatedAt = info.CreatedAt
 	info.Salt = random.String(6)
@@ -42,7 +42,7 @@ func (m *Mysql) Create(info *proto.User) (*proto.User, error) {
 }
 
 // Update Update
-func (m *Mysql) Update(info *proto.User) (*proto.User, error) {
+func (m *DB) Update(info *proto.User) (*proto.User, error) {
 	info.UpdatedAt = time.Now().Unix()
 	err := model.UseDB().Omit("password", "salt").Save(info).Error
 	if err != nil {
@@ -53,7 +53,7 @@ func (m *Mysql) Update(info *proto.User) (*proto.User, error) {
 }
 
 // Delete Delete
-func (m *Mysql) Delete(info *proto.User) (*proto.User, error) {
+func (m *DB) Delete(info *proto.User) (*proto.User, error) {
 	info.Status = proto.Status_DELETE
 	info.UpdatedAt = time.Now().Unix()
 	err := model.UseDB().Save(info).Error
@@ -65,35 +65,35 @@ func (m *Mysql) Delete(info *proto.User) (*proto.User, error) {
 }
 
 // InfoByID InfoByID
-func (m *Mysql) InfoByID(ID *proto.ID) (info *proto.User, err error) {
+func (m *DB) InfoByID(ID *proto.ID) (info *proto.User, err error) {
 	info = &proto.User{}
 	model.UseDB().Where("id = ?", ID.Id).First(&info)
 	return info, nil
 }
 
 // InfoByUsername InfoByUsername
-func (m *Mysql) InfoByUsername(Username *proto.Username) (info *proto.User, err error) {
+func (m *DB) InfoByUsername(Username *proto.Username) (info *proto.User, err error) {
 	info = &proto.User{}
 	model.UseDB().Where("username = ?", Username.Username).First(&info)
 	return info, nil
 }
 
 // InfoByPhone InfoByPhone
-func (m *Mysql) InfoByPhone(Phone *proto.Phone) (info *proto.User, err error) {
+func (m *DB) InfoByPhone(Phone *proto.Phone) (info *proto.User, err error) {
 	info = &proto.User{}
 	model.UseDB().Where("phone = ?", Phone.Phone).First(&info)
 	return info, nil
 }
 
 // InfoByEmail InfoByEmail
-func (m *Mysql) InfoByEmail(Email *proto.Email) (info *proto.User, err error) {
+func (m *DB) InfoByEmail(Email *proto.Email) (info *proto.User, err error) {
 	info = &proto.User{}
 	model.UseDB().Where("email = ?", Email.Email).First(&info)
 	return info, nil
 }
 
 // ListByPage ListByPage
-func (m *Mysql) ListByPage(in *proto.ListReq) (r *proto.UserList, err error) {
+func (m *DB) ListByPage(in *proto.ListReq) (r *proto.UserList, err error) {
 	r = &proto.UserList{}
 	db := model.UseDB()
 
@@ -124,7 +124,7 @@ func (m *Mysql) ListByPage(in *proto.ListReq) (r *proto.UserList, err error) {
 }
 
 // UpdatePassword UpdatePassword
-func (m *Mysql) UpdatePassword(info *proto.IDPassword) (rsp *proto.User, err error) {
+func (m *DB) UpdatePassword(info *proto.IDPassword) (rsp *proto.User, err error) {
 	rsp, err = m.InfoByID(&proto.ID{Id: info.Id})
 	if err != nil {
 		return nil, err

@@ -8,7 +8,7 @@ import (
 )
 
 // CreateCategory CreateCategory
-func (m *Mysql) CreateCategory(info *proto.ArticleCategory) (*proto.ArticleCategory, error) {
+func (m *DB) CreateCategory(info *proto.ArticleCategory) (*proto.ArticleCategory, error) {
 	info.CreatedAt = time.Now().Unix()
 	info.UpdatedAt = info.CreatedAt
 
@@ -21,7 +21,7 @@ func (m *Mysql) CreateCategory(info *proto.ArticleCategory) (*proto.ArticleCateg
 }
 
 // UpdateCategory UpdateCategory
-func (m *Mysql) UpdateCategory(info *proto.ArticleCategory) (*proto.ArticleCategory, error) {
+func (m *DB) UpdateCategory(info *proto.ArticleCategory) (*proto.ArticleCategory, error) {
 	info.UpdatedAt = time.Now().Unix()
 	err := model.UseDB().Save(info).Error
 	if err != nil {
@@ -32,7 +32,7 @@ func (m *Mysql) UpdateCategory(info *proto.ArticleCategory) (*proto.ArticleCateg
 }
 
 // DeleteCategory DeleteCategory
-func (m *Mysql) DeleteCategory(info *proto.ArticleCategory) (*proto.ArticleCategory, error) {
+func (m *DB) DeleteCategory(info *proto.ArticleCategory) (*proto.ArticleCategory, error) {
 	info.UpdatedAt = time.Now().Unix()
 	err := model.UseDB().Where("id = ?", info.Id).Delete(&proto.ArticleCategory{}).Error
 	if err != nil {
@@ -43,14 +43,14 @@ func (m *Mysql) DeleteCategory(info *proto.ArticleCategory) (*proto.ArticleCateg
 }
 
 // CategoryInfoByID CategoryInfoByID
-func (m *Mysql) CategoryInfoByID(ID *proto.ID) (info *proto.ArticleCategory, err error) {
+func (m *DB) CategoryInfoByID(ID *proto.ID) (info *proto.ArticleCategory, err error) {
 	info = &proto.ArticleCategory{}
 	model.UseDB().Where("id = ?", ID.Id).First(&info)
 	return info, nil
 }
 
 // CategoryListByPage CategoryListByPage
-func (m *Mysql) CategoryListByPage(in *proto.CategoryListReq) (r *proto.ArticleCategoryList, err error) {
+func (m *DB) CategoryListByPage(in *proto.CategoryListReq) (r *proto.ArticleCategoryList, err error) {
 	r = &proto.ArticleCategoryList{}
 	db := model.UseDB()
 
