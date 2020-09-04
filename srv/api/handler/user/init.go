@@ -2,9 +2,9 @@ package user
 
 import (
 	casbinV2 "github.com/casbin/casbin/v2"
+	"github.com/isfk/aio/proto/role"
+	"github.com/isfk/aio/proto/user"
 	"github.com/isfk/aio/srv/api/pkg/casbin"
-	"github.com/isfk/aio/srv/role/proto/role"
-	"github.com/isfk/aio/srv/user/proto/user"
 	"github.com/micro/go-micro/v2/client"
 )
 

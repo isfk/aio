@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
-	proto "github.com/isfk/aio/srv/user/proto/user"
+	proto "github.com/isfk/aio/proto/user"
 	"github.com/labstack/echo/v4"
 )
 

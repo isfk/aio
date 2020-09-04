@@ -1,7 +1,7 @@
 package tweet
 
 import (
-	"github.com/isfk/aio/srv/tweet/proto/tweet"
+	"github.com/isfk/aio/proto/tweet"
 	"github.com/micro/go-micro/v2/client"
 )
 

@@ -1,7 +1,7 @@
 package article
 
 import (
-	"github.com/isfk/aio/srv/article/proto/article"
+	"github.com/isfk/aio/proto/article"
 	"github.com/micro/go-micro/v2/client"
 )
 

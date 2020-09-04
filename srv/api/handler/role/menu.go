@@ -3,8 +3,8 @@ package role
 import (
 	"context"
 	"fmt"
+	"github.com/isfk/aio/proto/role"
 	rolePkg "github.com/isfk/aio/srv/api/pkg/role"
-	"github.com/isfk/aio/srv/role/proto/role"
 	"net/http"
 	"strconv"
 

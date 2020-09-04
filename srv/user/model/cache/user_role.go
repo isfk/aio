@@ -1,8 +1,8 @@
 package cache
 
 import (
+	proto "github.com/isfk/aio/proto/user"
 	"github.com/isfk/aio/srv/user/model/db"
-	proto "github.com/isfk/aio/srv/user/proto/user"
 )
 
 // CreateUserRole CreateUserRole

@@ -7,8 +7,8 @@ import (
 	"github.com/isfk/aio/srv/api/pkg/api"
 
 	"github.com/douyu/jupiter/pkg/xlog"
+	proto "github.com/isfk/aio/proto/user"
 	"github.com/isfk/aio/srv/api/pkg/validate"
-	proto "github.com/isfk/aio/srv/user/proto/user"
 	"github.com/labstack/echo/v4"
 )
 

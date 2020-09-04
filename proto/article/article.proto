@@ -4,7 +4,7 @@ package go.micro.service.article;
 
 option go_package = "article";
 
-import "github.com/isfk/aio/srv/user/proto/user/user.proto";
+import "github.com/isfk/aio/proto/user/user.proto";
 
 service Service {
     rpc Create(Article) returns (Article) {}

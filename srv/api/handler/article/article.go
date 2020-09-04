@@ -8,8 +8,8 @@ import (
 	"github.com/isfk/aio/srv/api/pkg/validate"
 	"github.com/labstack/echo/v4"
 
+	proto "github.com/isfk/aio/proto/article"
 	userMiddleware "github.com/isfk/aio/srv/api/middleware/user"
-	proto "github.com/isfk/aio/srv/article/proto/article"
 	log "github.com/micro/go-micro/v2/logger"
 )
 

@@ -4,7 +4,7 @@ package go.micro.service.user;
 
 option go_package = "user";
 
-import "github.com/isfk/aio/srv/role/proto/role/role.proto";
+import "github.com/isfk/aio/proto/role/role.proto";
 
 service Service {
     rpc Create(User) returns (User) {}

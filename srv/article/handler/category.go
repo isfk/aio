@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
+	"github.com/isfk/aio/proto/article"
 	"github.com/isfk/aio/srv/article/model/cache"
-	"github.com/isfk/aio/srv/article/proto/article"
 	log "github.com/micro/go-micro/v2/logger"
 )
 

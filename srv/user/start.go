@@ -8,7 +8,7 @@ import (
 	"github.com/micro/go-micro/v2"
 	log "github.com/micro/go-micro/v2/logger"
 
-	"github.com/isfk/aio/srv/user/proto/user"
+	"github.com/isfk/aio/proto/user"
 )
 
 var configFile string

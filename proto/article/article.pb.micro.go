@@ -6,7 +6,7 @@ package article
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/isfk/aio/srv/user/proto/user"
+	_ "github.com/isfk/aio/proto/user"
 	math "math"
 )
 

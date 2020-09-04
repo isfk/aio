@@ -6,7 +6,7 @@ import (
 	"github.com/isfk/aio/pkg/utils"
 
 	"github.com/isfk/aio/pkg/model"
-	proto "github.com/isfk/aio/srv/user/proto/user"
+	proto "github.com/isfk/aio/proto/user"
 	"github.com/labstack/gommon/random"
 )
 

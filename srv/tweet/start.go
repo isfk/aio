@@ -6,7 +6,7 @@ import (
 	"github.com/micro/go-micro/v2"
 	log "github.com/micro/go-micro/v2/logger"
 
-	tweet "github.com/isfk/aio/srv/tweet/proto/tweet"
+	tweet "github.com/isfk/aio/proto/tweet"
 )
 
 func Start() {

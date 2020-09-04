@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/isfk/aio/pkg/model"
-	proto "github.com/isfk/aio/srv/user/proto/user"
+	proto "github.com/isfk/aio/proto/user"
 )
 
 // CreateUserRole CreateUserRole

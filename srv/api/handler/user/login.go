@@ -6,10 +6,10 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
+	proto "github.com/isfk/aio/proto/user"
 	"github.com/isfk/aio/srv/api/pkg/api"
 	"github.com/isfk/aio/srv/api/pkg/utils"
 	"github.com/isfk/aio/srv/api/pkg/validate"
-	proto "github.com/isfk/aio/srv/user/proto/user"
 	"github.com/labstack/echo/v4"
 	log "github.com/micro/go-micro/v2/logger"
 )

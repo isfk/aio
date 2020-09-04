@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/isfk/aio/srv/role/proto/role"
+	"github.com/isfk/aio/proto/role"
 )
 
 const (

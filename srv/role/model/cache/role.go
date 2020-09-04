@@ -1,8 +1,8 @@
 package cache
 
 import (
+	proto "github.com/isfk/aio/proto/role"
 	"github.com/isfk/aio/srv/role/model/db"
-	proto "github.com/isfk/aio/srv/role/proto/role"
 )
 
 // Cache struct

@@ -1,8 +1,8 @@
 package cache
 
 import (
+	proto "github.com/isfk/aio/proto/article"
 	"github.com/isfk/aio/srv/article/model/db"
-	proto "github.com/isfk/aio/srv/article/proto/article"
 )
 
 // Cache struct

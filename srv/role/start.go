@@ -2,9 +2,9 @@ package role
 
 import (
 	"github.com/isfk/aio/config"
+	role "github.com/isfk/aio/proto/role"
 	"github.com/isfk/aio/srv/role/handler"
 	"github.com/isfk/aio/srv/role/model"
-	role "github.com/isfk/aio/srv/role/proto/role"
 	"github.com/micro/cli/v2"
 	"github.com/micro/go-micro/v2"
 	log "github.com/micro/go-micro/v2/logger"

@@ -6,7 +6,7 @@ package user
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/isfk/aio/srv/role/proto/role"
+	_ "github.com/isfk/aio/proto/role"
 	math "math"
 )
 

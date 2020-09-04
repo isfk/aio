@@ -9,7 +9,7 @@ import (
 	"github.com/isfk/aio/srv/api/pkg/validate"
 	"github.com/labstack/echo/v4"
 
-	tweet "github.com/isfk/aio/srv/tweet/proto/tweet"
+	tweet "github.com/isfk/aio/proto/tweet"
 )
 
 // Args struct

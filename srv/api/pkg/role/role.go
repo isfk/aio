@@ -1,6 +1,6 @@
 package role
 
-import "github.com/isfk/aio/srv/role/proto/role"
+import "github.com/isfk/aio/proto/role"
 
 // GetRuleListAll GetRuleListAll
 func GetRuleListAll(apis []*role.Api) map[int64]*role.Api {

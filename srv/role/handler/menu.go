@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/isfk/aio/srv/role/proto/role"
+	"github.com/isfk/aio/proto/role"
 )
 
 // MenuList MenuList

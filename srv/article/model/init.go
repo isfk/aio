@@ -3,7 +3,7 @@ package model
 import (
 	"github.com/isfk/aio/config"
 	"github.com/isfk/aio/pkg/model"
-	proto "github.com/isfk/aio/srv/article/proto/article"
+	proto "github.com/isfk/aio/proto/article"
 )
 
 // Init Init

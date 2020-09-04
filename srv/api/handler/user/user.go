@@ -7,9 +7,9 @@ import (
 	"github.com/isfk/aio/srv/api/pkg/api"
 	log "github.com/micro/go-micro/v2/logger"
 
+	proto "github.com/isfk/aio/proto/user"
 	userMiddleware "github.com/isfk/aio/srv/api/middleware/user"
 	"github.com/isfk/aio/srv/api/pkg/validate"
-	proto "github.com/isfk/aio/srv/user/proto/user"
 	"github.com/labstack/echo/v4"
 )
 
