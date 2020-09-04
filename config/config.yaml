@@ -1,0 +1,13 @@
+global:
+  db:
+    default:
+      host: "db"
+      user: "aio_db_user"
+      password: "RjwuGv12XSDaVsW7"
+      db: "aio_db"
+      port: "3306"
+  redis:
+    default:
+      host: "redis"
+      password: "aioaio"
+      port: "6379"

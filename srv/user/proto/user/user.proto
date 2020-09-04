@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package go.micro.service.user;
+
+option go_package = "user";
+
+import "github.com/isfk/aio/srv/role/proto/role/role.proto";
+
+service Service {
+    rpc Create(User) returns (User) {}
+    rpc Update(User) returns (User) {}
+    rpc Delete(User) returns (User) {}
+    rpc InfoByID(ID) returns (User) {}
+    rpc InfoByUsername(Username) returns (User) {}
+    rpc InfoByPhone(Phone) returns (User) {}
+    rpc InfoByEmail(Email) returns (User) {}
+    rpc ListByPage(ListReq) returns (UserList) {}
+    rpc UpdatePassword(IDPassword) returns (User) {}
+
+    rpc CreateUserRole(UserRole) returns (UserRole) {}
+    rpc DeleteUserRole(UserRole) returns (UserRole) {}
+    rpc UserRoleInfo(UserRole) returns (UserRole) {}
+    rpc UserRoleListByUID(UID) returns (UserRoleList) {}
+}
+
+message User {
+    int64 id = 1;
+    string username = 2;
+    string nickname = 3;
+    string phone = 4;
+    string email = 5;
+    Gender gender = 6;
+    string password = 7;
+    string avatar = 8;
+    string salt = 9;
+    Status status = 10;
+    int64 created_at = 12;
+    int64 updated_at = 13;
+}
+
+// Role 合 role service 同步结构
+message Role {
+    int64 id = 1;
+    string name = 2;
+    Status status = 3;
+    int64 created_at = 4;
+    int64 updated_at = 5;
+}
+
+message UserRole {
+    int64 id = 1;
+    int64 uid = 2;
+    int64 role_id = 3;
+    int64 created_at = 4;
+    int64 updated_at = 5;
+    role.Role role = 6;
+}
+
+message ID {
+    int64 id = 1;
+}
+
+message UID {
+    int64 uid = 1;
+}
+
+message Username {
+    string username = 1;
+}
+
+message Phone {
+    string phone = 1;
+}
+
+message Email {
+    string email = 1;
+}
+
+enum Gender {
+    UNKNOWN_GENDER = 0;
+    WOMAN = 1;
+    MAN = 2;
+    SECRET = 3;
+}
+
+enum Status {
+    UNKNOWN_STATUS = 0;
+    NORMAL = 1;
+    DELETE = -1;
+}
+
+message ListReq {
+    int64 page = 1;
+    int64 limit = 2;
+    int64 status = 3;
+    string name = 4;
+}
+
+message UserList {
+    repeated User list = 1;
+    int64 count = 2;
+}
+
+message IDPassword {
+    int64 id = 1;
+    string password = 2;
+}
+
+message RoleID {
+    int64 role_id = 1;
+}
+
+message UserRoleList {
+    repeated UserRole list = 1;
+}

@@ -1,0 +1,73 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7.16
+    container_name: aio_mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 9EY449gpWPR7aGc7
+    ports:
+      - '3320:3306'
+    volumes:
+      - ./docker/db:/etc/db/db.conf.d
+      - ./docker/sql:/docker-entrypoint-initdb.d
+      - ./docker/data/db:/var/lib/db
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  redis:
+    image: redis
+    container_name: aio_redis
+    command: redis-server --requirepass aioaio
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./docker/data/redis:/data
+
+  micro:
+    image: micro/micro:v2.9.3
+    container_name: aio_micro
+    command: server
+    ports:
+      - 8082:8082
+
+  api:
+    build: ./docker/go
+    container_name: aio_api
+    command: bash -c "make build && make run_api"
+    volumes:
+      - ./:/go/src/myapp
+
+  user:
+    build: ./docker/go
+    container_name: aio_user
+    command: bash -c "make build && make run_user"
+    volumes:
+      - ./:/go/src/myapp
+
+  role:
+    build: ./docker/go
+    container_name: aio_role
+    command: bash -c "make build && make run_role"
+    volumes:
+      - ./:/go/src/myapp
+
+  article:
+    build: ./docker/go
+    container_name: aio_article
+    command: bash -c "make build && make run_article"
+    volumes:
+      - ./:/go/src/myapp
+
+  tweet:
+    build: ./docker/go
+    container_name: aio_tweet
+    command: bash -c "make build && make run_tweet"
+    volumes:
+      - ./:/go/src/myapp

@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package go.micro.service.article;
+
+option go_package = "article";
+
+import "github.com/isfk/aio/srv/user/proto/user/user.proto";
+
+service Service {
+    rpc Create(Article) returns (Article) {}
+    rpc Update(Article) returns (Article) {}
+    rpc Delete(Article) returns (Article) {}
+    rpc InfoByID(ID) returns (Article) {}
+    rpc ListByPage(ListReq) returns (ArticleList) {}
+
+    rpc CreateCategory(ArticleCategory) returns (ArticleCategory) {}
+    rpc UpdateCategory(ArticleCategory) returns (ArticleCategory) {}
+    rpc DeleteCategory(ArticleCategory) returns (ArticleCategory) {}
+    rpc CategoryInfoByID(ID) returns (ArticleCategory) {}
+    rpc CategoryListByPage(CategoryListReq) returns (ArticleCategoryList) {}
+}
+
+message Article {
+    int64 id = 1;
+    int64 user_id = 2;
+    int64 category_id = 3;
+    string title = 4;
+    string content = 5;
+    Status status = 7;
+    int64 created_at = 8;
+    int64 updated_at = 9;
+    user.User user = 10;
+    article.ArticleCategory category = 11;
+}
+
+message ArticleCategory {
+    int64 id = 1;
+    int64 uid = 2;
+    string name = 4;
+    int64 created_at = 8;
+    int64 updated_at = 9;
+}
+
+message ID {
+    int64 id = 1;
+}
+
+message UID {
+    int64 uid = 1;
+}
+
+enum Status {
+    UNKNOWN_STATUS = 0;
+    NORMAL = 1;
+    DELETE = -1;
+}
+
+message ListReq {
+    int64 page = 1;
+    int64 limit = 2;
+    int64 status = 3;
+    string title = 4;
+    int64 uid = 5;
+    int64 category_id = 6;
+}
+
+message CategoryListReq {
+    int64 page = 1;
+    int64 limit = 2;
+    int64 status = 3;
+    string name = 4;
+    int64 uid = 5;
+}
+
+message ArticleList {
+    repeated Article list = 1;
+    int64 count = 2;
+}
+
+message ArticleCategoryList {
+    repeated ArticleCategory list = 1;
+    int64 count = 2;
+}

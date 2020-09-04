@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package go.micro.service.role;
+
+option go_package = "role";
+
+service Service {
+    rpc Create(Role) returns (Role) {}
+    rpc Update(Role) returns (Role) {}
+    rpc Delete(Role) returns (Role) {}
+    rpc InfoByID(ID) returns (Role) {}
+    rpc InfoByName(Name) returns (Role) {}
+    rpc ListByPage(ListReq) returns (RoleList) {}
+
+    // 规则、API、菜单
+    rpc RuleList(Null) returns (RuleListRet) {}
+    rpc MenuList(Null) returns (MenuListRet) {}
+}
+
+message Null {}
+
+message Role {
+    int64 id = 1;
+    string name = 2;
+    Status status = 3;
+    int64 created_at = 4;
+    int64 updated_at = 5;
+}
+
+enum Status {
+    UNKNOWN = 0;
+    NORMAL = 1;
+    DELETE = -1;
+}
+
+message ID {
+    int64 id = 1;
+}
+
+message Name {
+    string name = 1;
+}
+
+message ListReq {
+    int64 page = 1;
+    int64 limit = 2;
+    int64 status = 3;
+}
+
+message RoleList {
+    repeated Role list = 1;
+    int64 count = 2;
+}
+
+message Api {
+    int64 id = 1;
+    string method = 2;
+    string label = 3;
+    string path = 4;
+    repeated role.Api children = 5;
+}
+
+message RuleListRet {
+    repeated role.Api list = 1;
+}
+
+message Meta {
+    string title = 1;
+    string icon = 2;
+}
+
+message Menu {
+    int64 id = 1;
+    string label = 2;
+    string path = 3;
+    string name = 4;
+    Meta meta = 5;
+    string component = 6;
+    string redirect = 7;
+    bool hidden = 8;
+    repeated role.Menu children = 9;
+}
+
+message MenuListRet {
+    repeated Menu list = 1;
+}
