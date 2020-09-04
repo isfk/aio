@@ -3,5 +3,3 @@
 .DS_Store
 aio
 docker/data
-*-service
-api-web
