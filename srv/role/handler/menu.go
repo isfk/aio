@@ -37,6 +37,23 @@ func (e *Role) MenuList(ctx context.Context, req *role.Null, rsp *role.MenuListR
 		},
 	})
 
+	list = append(list, &role.Menu{
+		Id:        10400,
+		Label:     "文章管理",
+		Path:      "/article",
+		Component: "layout",
+		Hidden:    false,
+		Meta:      &role.Meta{Title: "文章管理", Icon: "el-icon-user-solid"},
+		Children: []*role.Menu{
+			{
+				Id: 10401, Label: "文章列表", Path: "list", Name: "article_list", Component: "article_list", Meta: &role.Meta{Title: "文章列表"},
+			},
+			{
+				Id: 10451, Label: "分类列表", Path: "category/list", Name: "category_list", Component: "category_list", Meta: &role.Meta{Title: "分类列表"},
+			},
+		},
+	})
+
 	ret := &role.MenuListRet{
 		List: list,
 	}

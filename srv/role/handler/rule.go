@@ -87,6 +87,23 @@ func (e *Role) RuleList(ctx context.Context, req *role.Null, rsp *role.RuleListR
 		},
 	})
 
+	list = append(list, &role.Api{
+		Id:    10400,
+		Label: "文章管理",
+		Children: []*role.Api{
+			{Id: 10401, Method: MethodGet, Label: "文章列表", Path: "/api/v1/article/list"},
+			{Id: 10402, Method: MethodGet, Label: "文章信息", Path: "/api/v1/article/:id"},
+			{Id: 10403, Method: MethodPos, Label: "添加文章", Path: "/api/v1/article"},
+			{Id: 10404, Method: MethodPut, Label: "编辑文章", Path: "/api/v1/article/:id"},
+			{Id: 10405, Method: MethodDel, Label: "删除文章", Path: "/api/v1/article/:id"},
+			{Id: 10451, Method: MethodGet, Label: "文章分类列表", Path: "/api/v1/article/category/list"},
+			{Id: 10452, Method: MethodGet, Label: "文章分类信息", Path: "/api/v1/article/category/:id"},
+			{Id: 10453, Method: MethodPos, Label: "添加文章分类", Path: "/api/v1/article/category"},
+			{Id: 10454, Method: MethodPut, Label: "编辑文章分类", Path: "/api/v1/article/category/:id"},
+			{Id: 10455, Method: MethodDel, Label: "删除文章分类", Path: "/api/v1/article/category/:id"},
+		},
+	})
+
 	ret := &role.RuleListRet{
 		List: list,
 	}

@@ -30,11 +30,11 @@ func Register(e *echo.Echo) {
 	a.GET("/:ID", article.V1.Info)  // 获取信息
 	a.GET("/list", article.V1.List) // 获取列表
 
-	a.POST("", article.V1.AddCategory)       // 增
-	a.PUT("/:ID", article.V1.EditCategory)   // 改
-	a.DELETE("/:ID", article.V1.DelCategory) // 删
+	a.POST("/category", article.V1.AddCategory)       // 增
+	a.PUT("/category/:ID", article.V1.EditCategory)   // 改
+	a.DELETE("/category/:ID", article.V1.DelCategory) // 删
 
-	a.GET("/:ID", article.V1.CategoryInfo)  // 获取信息
-	a.GET("/list", article.V1.CategoryList) // 获取列表
+	a.GET("/category/:ID", article.V1.CategoryInfo)  // 获取信息
+	a.GET("/category/list", article.V1.CategoryList) // 获取列表
 
 }
