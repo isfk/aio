@@ -37,5 +37,36 @@ type ListArgs struct {
 	CategoryID int64  `json:"category_id" form:"category_id" query:"category_id" validate:""`
 }
 
+// AddCategoryArgs struct
+type AddCategoryArgs struct {
+	Name string `json:"name" form:"name" query:"name" validate:"required,min=2,max=60"`
+}
+
+// EditCategoryArgs struct
+type EditCategoryArgs struct {
+	ID   int64  `json:"id" form:"id" query:"id" validate:"required,number"`
+	Name string `json:"name" form:"name" query:"name" validate:"required,min=2,max=60"`
+}
+
+// DelCategoryArgs struct
+type DelCategoryArgs struct {
+	ID int64 `json:"id" form:"id" query:"id" validate:"required,number"`
+}
+
+// CategoryInfoArgs struct
+type CategoryInfoArgs struct {
+	ID int64 `json:"id" form:"id" query:"id" validate:""`
+}
+
+// CategoryListArgs struct
+type CategoryListArgs struct {
+	Page       int64  `json:"page" form:"page" query:"page" validate:""`
+	Limit      int64  `json:"limit" form:"limit" query:"limit" validate:""`
+	Status     int64  `json:"status" form:"status" query:"status" validate:""`
+	Name       string `json:"name" form:"name" query:"name" validate:""`
+	UserID     int64  `json:"user_id" form:"user_id" query:"user_id" validate:""`
+	CategoryID int64  `json:"category_id" form:"category_id" query:"category_id" validate:""`
+}
+
 // EmptyArgs EmptyArgs
 type EmptyArgs struct{}
