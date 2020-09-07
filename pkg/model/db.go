@@ -22,7 +22,7 @@ func DBInit(configs map[string]config.DBConf) {
 		db, err := gorm.Open(mysql.New(mysql.Config{
 			DSN: dsn,
 		}), &gorm.Config{
-			//DisableForeignKeyConstraintWhenMigrating: true,
+			DisableForeignKeyConstraintWhenMigrating: true,
 		})
 
 		if err != nil {
